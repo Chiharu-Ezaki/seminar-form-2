@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【第2回】セミナー終了時アンケート | 現場が回る職場の作り方</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts Inter & Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: #ffffff;
+      }
+      .survey-card {
+        box-shadow: none !important;
+        border: 1px solid #e2e8f0;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen py-6 px-3 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+    
+    <!-- Top Action Bar (No-Print) -->
+    <div class="no-print flex justify-end gap-3 mb-4">
+      <button onclick="window.print()" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium text-slate-600 bg-white border border-slate-300 rounded-lg shadow-sm hover:bg-slate-50 focus:outline-none transition">
+        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+        印刷・PDF保存
+      </button>
+      <button onclick="copyFormResponses()" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium text-teal-700 bg-teal-50 border border-teal-200 rounded-lg shadow-sm hover:bg-teal-100 focus:outline-none transition">
+        <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+        回答内容をコピー
+      </button>
+    </div>
+
+    <!-- Main Form Card -->
+    <div class="survey-card bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      
+      <!-- Header Banner -->
+      <div class="bg-gradient-to-r from-emerald-800 via-teal-800 to-slate-900 text-white p-6 sm:p-8">
+        <div class="inline-block bg-teal-500/30 text-teal-100 text-xs font-semibold px-2.5 py-1 rounded-full mb-3 backdrop-blur-sm">
+          全4回シリーズ実践セミナー
+        </div>
+        <h1 class="text-xl sm:text-2xl font-bold tracking-tight">【第2回】セミナー終了時アンケート</h1>
+        <p class="mt-2 text-teal-100 font-medium text-sm sm:text-base">
+          テーマ：現場が回る職場の作り方（日本人社員の意識改革・採用基準・外部連携）
+        </p>
+        <p class="mt-3 text-xs sm:text-sm text-slate-200 leading-relaxed">
+          本日はご参加いただき誠にありがとうございました。<br class="hidden sm:inline">
+          今後のセミナー運営改善、ならびに<strong>【第4回 質疑応答セッション】</strong>にて講師が回答・アドバイスを行うための参考にさせていただきます。（所要時間：約2〜3分）
+        </p>
+      </div>
+
+      <!-- Survey Form Body -->
+      <form id="surveyForm" action="https://formspree.io/f/myekdaar" method="POST" onsubmit="handleSubmit(event)" class="p-6 sm:p-8 space-y-8">
+        <!-- 識別用隠しフィールド -->
+        <input type="hidden" name="seminar_title" value="第2回セミナー（現場が回る職場の作り方）">
+
+        <!-- SECTION 1: 全回共通 基本属性 -->
+        <section class="space-y-6">
+          <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-teal-700 text-white text-xs font-bold">1</span>
+            <h2 class="text-lg font-bold text-slate-900">基本情報（ご回答者様情報）</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label for="company_name" class="block text-sm font-semibold text-slate-700">
+                貴社名 <span class="text-rose-500">*</span>
+              </label>
+              <input type="text" id="company_name" name="company_name" required placeholder="例）株式会社〇〇"
+                class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-sm">
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="respondent_name" class="block text-sm font-semibold text-slate-700">
+                お名前 <span class="text-rose-500">*</span>
+              </label>
+              <input type="text" id="respondent_name" name="respondent_name" required placeholder="例）山田 太郎"
+                class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-sm">
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="position" class="block text-sm font-semibold text-slate-700">
+                ご役職
+              </label>
+              <select id="position" name="position"
+                class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-sm bg-white">
+                <option value="">選択してください</option>
+                <option value="経営者・役員">経営者・役員</option>
+                <option value="現場・工場責任者・リーダー">現場・工場責任者・リーダー</option>
+                <option value="人事・総務部門責任者">人事・総務部門責任者</option>
+                <option value="採用担当者">採用担当者</option>
+                <option value="その他">その他</option>
+              </select>
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="email" class="block text-sm font-semibold text-slate-700">
+                メールアドレス <span class="text-xs text-slate-400 font-normal">（回答控え・案内送信用）</span>
+              </label>
+              <input type="email" id="email" name="email" placeholder="example@company.co.jp"
+                class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-sm">
+            </div>
+          </div>
+
+          <!-- 業種選択 -->
+          <div class="space-y-2 pt-2">
+            <label class="block text-sm font-semibold text-slate-700">
+              貴社の主な業種 <span class="text-rose-500">*</span>
+            </label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
+              <label class="flex items-center gap-2 p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="industry" value="製造業" required class="text-teal-600 focus:ring-teal-500">
+                <span>製造業</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="industry" value="建設業" class="text-teal-600 focus:ring-teal-500">
+                <span>建設業</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="industry" value="外食業" class="text-teal-600 focus:ring-teal-500">
+                <span>外食業</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="industry" value="宿泊業" class="text-teal-600 focus:ring-teal-500">
+                <span>宿泊業</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="industry" value="介護業" class="text-teal-600 focus:ring-teal-500">
+                <span>介護業</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="industry" value="物流・自動車運送業" class="text-teal-600 focus:ring-teal-500">
+                <span>物流・自動車運送業</span>
+              </label>
+              <label class="col-span-2 flex items-center gap-2 p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="industry" value="その他" id="industry_other_radio" class="text-teal-600 focus:ring-teal-500">
+                <span class="whitespace-nowrap">その他：</span>
+                <input type="text" id="industry_other_text" placeholder="自由記入"
+                  class="flex-1 px-2 py-1 text-xs sm:text-sm border-b border-slate-300 focus:outline-none focus:border-teal-600">
+              </label>
+            </div>
+          </div>
+
+          <!-- 外国人雇用の現状 -->
+          <div class="space-y-2 pt-2">
+            <label class="block text-sm font-semibold text-slate-700">
+              現在の外国人雇用の状況 <span class="text-rose-500">*</span>
+            </label>
+            <div class="space-y-2 text-sm">
+              <label class="block p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <div class="flex items-start gap-2.5">
+                  <input type="radio" name="employment_status" value="すでに雇用している" required class="mt-0.5 text-teal-600 focus:ring-teal-500">
+                  <div class="flex-1">
+                    <span class="font-medium text-slate-800">すでに雇用している</span>
+                    <div class="mt-2 pl-2 border-l-2 border-teal-200 text-xs text-slate-600 space-y-1">
+                      <span class="block text-slate-500 font-medium">主な在留資格（該当するものすべて）：</span>
+                      <div class="flex flex-wrap gap-3 pt-1">
+                        <label class="inline-flex items-center gap-1 cursor-pointer">
+                          <input type="checkbox" name="current_visa" value="特定技能" class="rounded text-teal-600 focus:ring-teal-500"> 特定技能
+                        </label>
+                        <label class="inline-flex items-center gap-1 cursor-pointer">
+                          <input type="checkbox" name="current_visa" value="技能実習" class="rounded text-teal-600 focus:ring-teal-500"> 技能実習
+                        </label>
+                        <label class="inline-flex items-center gap-1 cursor-pointer">
+                          <input type="checkbox" name="current_visa" value="技術・人文知識・国際業務" class="rounded text-teal-600 focus:ring-teal-500"> 技人国
+                        </label>
+                        <label class="inline-flex items-center gap-1 cursor-pointer">
+                          <input type="checkbox" name="current_visa" value="アルバイト（留学等）" class="rounded text-teal-600 focus:ring-teal-500"> アルバイト等
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="employment_status" value="近い将来（半年〜1年以内）に雇用を検討・計画中" class="text-teal-600 focus:ring-teal-500">
+                <span class="text-slate-800">近い将来（半年〜1年以内）に雇用を検討・計画中</span>
+              </label>
+
+              <label class="flex items-center gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="radio" name="employment_status" value="情報収集中・未定" class="text-teal-600 focus:ring-teal-500">
+                <span class="text-slate-800">情報収集中・未定</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: 満足度・講義内容の評価 -->
+        <section class="space-y-6">
+          <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-teal-700 text-white text-xs font-bold">2</span>
+            <h2 class="text-lg font-bold text-slate-900">セミナーの評価・現場で活かしたい点</h2>
+          </div>
+
+          <!-- Q1 満足度 -->
+          <div class="space-y-2">
+            <label class="block text-sm font-semibold text-slate-800">
+              Q1. 本日のセミナーの満足度をお聞かせください。 <span class="text-rose-500">*</span>
+            </label>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-sm">
+              <label class="flex flex-col items-center justify-center p-3 rounded-xl border border-slate-200 hover:bg-teal-50/50 hover:border-teal-300 cursor-pointer transition">
+                <input type="radio" name="satisfaction" value="大変満足" required class="mb-1 text-teal-600 focus:ring-teal-500">
+                <span class="font-medium text-slate-800">大変満足</span>
+              </label>
+              <label class="flex flex-col items-center justify-center p-3 rounded-xl border border-slate-200 hover:bg-teal-50/50 hover:border-teal-300 cursor-pointer transition">
+                <input type="radio" name="satisfaction" value="満足" class="mb-1 text-teal-600 focus:ring-teal-500">
+                <span class="font-medium text-slate-800">満足</span>
+              </label>
+              <label class="flex flex-col items-center justify-center p-3 rounded-xl border border-slate-200 hover:bg-teal-50/50 hover:border-teal-300 cursor-pointer transition">
+                <input type="radio" name="satisfaction" value="普通" class="mb-1 text-teal-600 focus:ring-teal-500">
+                <span class="font-medium text-slate-800">普通</span>
+              </label>
+              <label class="flex flex-col items-center justify-center p-3 rounded-xl border border-slate-200 hover:bg-teal-50/50 hover:border-teal-300 cursor-pointer transition">
+                <input type="radio" name="satisfaction" value="やや不満" class="mb-1 text-teal-600 focus:ring-teal-500">
+                <span class="font-medium text-slate-800">やや不満</span>
+              </label>
+              <label class="flex flex-col items-center justify-center p-3 rounded-xl border border-slate-200 hover:bg-teal-50/50 hover:border-teal-300 cursor-pointer transition">
+                <input type="radio" name="satisfaction" value="不満" class="mb-1 text-teal-600 focus:ring-teal-500">
+                <span class="font-medium text-slate-800">不満</span>
+              </label>
+            </div>
+            <div class="mt-2">
+              <input type="text" name="satisfaction_reason" placeholder="上記評価の理由（任意）"
+                class="w-full px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600">
+            </div>
+          </div>
+
+          <!-- Q2 共感した・現場で活かしたい点 -->
+          <div class="space-y-2 pt-2">
+            <label class="block text-sm font-semibold text-slate-800">
+              Q2. 本日の内容で、特に共感した・現場で活かしたい点をお選びください。（複数選択可）
+            </label>
+            <div class="space-y-2 text-sm">
+              <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="helpful_points" value="採用要件の切り分け（作業からの逆算・スキルと人物面の分離）" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500">
+                <span>採用要件の切り分け（作業からの逆算・スキルと人物面の分離）</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="helpful_points" value="誘導尋問を排除した面接技術（過去の行動事実の確認）" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500">
+                <span>誘導尋問を排除した面接技術（過去の行動事実の確認）</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="helpful_points" value="生活サポートと業務の切り分け（日本人の疲弊防止）" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500">
+                <span>生活サポートと業務の切り分け（日本人の疲弊防止）</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="helpful_points" value="日本人社員側のマインド変革と文化的背景（指示待ちになる理由）の理解" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500">
+                <span>日本人社員側のマインド変革と文化的背景（指示待ちになる理由）の理解</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="helpful_points" value="登録支援機関とのスクラム体制（丸投げ防止と外部人事部化）" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500">
+                <span>登録支援機関とのスクラム体制（丸投げ防止と外部人事部化）</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="helpful_points" value="その他" id="helpful_other_check" class="rounded text-teal-600 focus:ring-teal-500">
+                <span class="whitespace-nowrap">その他：</span>
+                <input type="text" id="helpful_other_text" placeholder="自由記入"
+                  class="flex-1 px-2 py-1 text-xs sm:text-sm border-b border-slate-300 focus:outline-none focus:border-teal-600">
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: 現場の課題・講師への質問 -->
+        <section class="space-y-6">
+          <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-teal-700 text-white text-xs font-bold">3</span>
+            <h2 class="text-lg font-bold text-slate-900">現場のお困りごと ＆ 講師への質問</h2>
+          </div>
+
+          <!-- Q3 現場のお困りごと -->
+          <div class="space-y-2">
+            <label class="block text-sm font-semibold text-slate-800">
+              Q3. 【現場のお困りごと・社内体制の課題】現場の受け入れや日本人社員との関係において、直面している（または懸念している）課題は何ですか？（複数選択可）
+            </label>
+            <div class="space-y-2 text-sm">
+              <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="issues" value="現場の日本人社員やリーダーに負担感や受け入れへの抵抗感がある" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500">
+                <span>現場の日本人社員やリーダーに負担感や受け入れへの抵抗感がある</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="issues" value="指示通りに動いてくれない／「わかりました」と返事をするのにミスが起きる" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500">
+                <span>指示通りに動いてくれない／「わかりました」と返事をするのにミスが起きる</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="issues" value="求める人物像や採用基準が曖昧で、面接で何を見極めるべきか分からない" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500">
+                <span>求める人物像や採用基準が曖昧で、面接で何を見極めるべきか分からない</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="issues" value="言葉の壁による業務停滞や、日本語教育を社内でどう進めるべきか悩んでいる" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500">
+                <span>言葉の壁による業務停滞や、日本語教育を社内でどう進めるべきか悩んでいる</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="issues" value="登録支援機関にどこまで任せ、自社で何を担うべきかの境界線が定まっていない" class="mt-0.5 rounded text-teal-600 focus:ring-teal-500">
+                <span>登録支援機関にどこまで任せ、自社で何を担うべきかの境界線が定まっていない</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer">
+                <input type="checkbox" name="issues" value="その他" id="issue_other_check" class="rounded text-teal-600 focus:ring-teal-500">
+                <span class="whitespace-nowrap">その他：</span>
+                <input type="text" id="issue_other_text" placeholder="自由記入"
+                  class="flex-1 px-2 py-1 text-xs sm:text-sm border-b border-slate-300 focus:outline-none focus:border-teal-600">
+              </label>
+            </div>
+          </div>
+
+          <!-- Q4 第4回質疑用質問 -->
+          <div class="space-y-2 pt-2">
+            <div class="flex items-baseline justify-between">
+              <label for="question_for_lecture4" class="block text-sm font-semibold text-slate-800">
+                Q4. 【第4回質疑用】社内教育・面接方法・外部支援機関との連携について、講師に直接アドバイスを求めたい具体的な悩みをご記入ください。
+              </label>
+              <span class="text-xs text-slate-400">任意</span>
+            </div>
+            <p class="text-xs text-slate-500">
+              ※面接での見極め方、現場社員との衝突予防、登録支援機関への要望の伝え方など、社内のリアルなご相談をご自由にご記入ください。第4回セッションにて匿名の上で解説・アドバイスいたします。
+            </p>
+            <textarea id="question_for_lecture4" name="question_for_lecture4" rows="4"
+              placeholder="例）現場リーダーの負担を減らすために具体的に何を委託すべきか？／過去の面接で『真面目そう』と判断したのに早期離職が続いたため見極めのコツを知りたい、など"
+              class="w-full px-3.5 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-teal-600 text-sm leading-relaxed"></textarea>
+          </div>
+        </section>
+
+        <!-- SECTION 4: 特典・サポートの希望 -->
+        <section class="space-y-4 pt-2">
+          <div class="p-4 rounded-xl bg-teal-50/50 border border-teal-200/80 space-y-3">
+            <label class="block text-sm font-semibold text-slate-800">
+              Q5. 特典・サポートのご希望をお選びください
+            </label>
+            <div class="space-y-2 text-sm">
+              <label class="flex items-center gap-2.5 cursor-pointer">
+                <input type="checkbox" name="benefits_request" value="「現場指導者向け 外国人受け入れ研修」の案内を希望する" class="rounded text-teal-600 focus:ring-teal-500">
+                <span class="text-slate-800 font-medium">「現場指導者向け 外国人受け入れ研修」の案内を希望する</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer">
+                <input type="checkbox" name="benefits_request" value="無料の個別相談（採用要件の言語化・社内体制づくり）を希望する" class="rounded text-teal-600 focus:ring-teal-500">
+                <span class="text-slate-800 font-medium">無料の個別相談（採用要件の言語化・社内体制づくり）を希望する</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer">
+                <input type="checkbox" name="benefits_request" value="今は希望しない" class="rounded text-teal-600 focus:ring-teal-500">
+                <span class="text-slate-600">今は希望しない</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- Submit Buttons -->
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-100">
+          <p class="text-xs text-slate-400">ご記入いただいた情報は本セミナーの運営およびご案内のみに利用いたします。</p>
+          <div class="flex items-center gap-3 w-full sm:w-auto">
+            <button id="submitButton" type="submit" class="w-full sm:w-auto px-6 py-3 bg-teal-700 hover:bg-teal-800 text-white font-medium rounded-xl shadow-sm hover:shadow transition duration-150 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+              <svg id="submitIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <svg id="loadingSpinner" class="animate-spin -ml-1 mr-2 h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+              <span id="submitButtonText">アンケートを送信する</span>
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Confirmation Modal / Alert Box -->
+    <div id="modalBackdrop" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+      <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 transform transition-all text-center">
+        <div id="modalIconContainer" class="w-12 h-12 rounded-full bg-teal-100 text-teal-700 mx-auto flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <h3 id="modalTitle" class="text-lg font-bold text-slate-900 mb-2">アンケートを受け付けました</h3>
+        <p class="text-sm text-slate-600 leading-relaxed mb-6" id="modalMessage">
+          ご協力誠にありがとうございました。<br>いただいたご質問・お悩みは【第4回 質疑応答セッション】にて講師より詳しく解説いたします。
+        </p>
+        <button type="button" onclick="closeModal()" class="w-full py-2.5 px-4 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-xl transition">
+          閉じる
+        </button>
+      </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-2.5 rounded-lg shadow-lg text-sm hidden transition-all duration-300">
+      <span id="toastText">コピーしました</span>
+    </div>
+
+  </div>
+
+  <script>
+    // フォーム送信ハンドラー（Formspree APIへの非同期送信）
+    async function handleSubmit(event) {
+      event.preventDefault();
+      
+      const form = document.getElementById('surveyForm');
+      const submitBtn = document.getElementById('submitButton');
+      const submitText = document.getElementById('submitButtonText');
+      const submitIcon = document.getElementById('submitIcon');
+      const spinner = document.getElementById('loadingSpinner');
+      
+      const formData = new FormData(form);
+
+      // 「その他」の記述がある場合の整形
+      if (document.getElementById('industry_other_radio').checked) {
+        const customIndustry = document.getElementById('industry_other_text').value.trim();
+        if (customIndustry) {
+          formData.set('industry', `その他: ${customIndustry}`);
+        }
+      }
+      if (document.getElementById('helpful_other_check').checked) {
+        const customHelpful = document.getElementById('helpful_other_text').value.trim();
+        if (customHelpful) {
+          formData.append('helpful_points', `その他: ${customHelpful}`);
+        }
+      }
+      if (document.getElementById('issue_other_check').checked) {
+        const customIssue = document.getElementById('issue_other_text').value.trim();
+        if (customIssue) {
+          formData.append('issues', `その他: ${customIssue}`);
+        }
+      }
+
+      // 送信中ステートへの切り替え
+      submitBtn.disabled = true;
+      submitIcon.classList.add('hidden');
+      spinner.classList.remove('hidden');
+      submitText.textContent = '送信中...';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          const company = formData.get('company_name') || '';
+          const name = formData.get('respondent_name') || '';
+          
+          document.getElementById('modalTitle').textContent = 'アンケートを受け付けました';
+          document.getElementById('modalIconContainer').className = 'w-12 h-12 rounded-full bg-teal-100 text-teal-700 mx-auto flex items-center justify-center mb-4';
+          document.getElementById('modalMessage').innerHTML = `${company ? `${company}<br>` : ''}${name ? `<strong>${name} 様</strong><br>` : ''}ご回答誠にありがとうございました。<br>いただいたご質問・ご相談は【第4回 質疑応答セッション】にて講師より詳しく解説いたします。`;
+          
+          form.reset();
+        } else {
+          const data = await response.json();
+          let errorMsg = '送信中にエラーが発生しました。時間をおいて再度お試しください。';
+          if (data && data.errors && data.errors.length > 0) {
+            errorMsg = data.errors.map(err => err.message).join(', ');
+          }
+          document.getElementById('modalTitle').textContent = '送信に失敗しました';
+          document.getElementById('modalIconContainer').className = 'w-12 h-12 rounded-full bg-rose-100 text-rose-600 mx-auto flex items-center justify-center mb-4';
+          document.getElementById('modalMessage').textContent = errorMsg;
+        }
+      } catch (err) {
+        document.getElementById('modalTitle').textContent = '通信エラー';
+        document.getElementById('modalIconContainer').className = 'w-12 h-12 rounded-full bg-rose-100 text-rose-600 mx-auto flex items-center justify-center mb-4';
+        document.getElementById('modalMessage').textContent = 'ネットワーク接続エラーが発生しました。接続環境をご確認のうえ再度お試しください。';
+      } finally {
+        submitBtn.disabled = false;
+        submitIcon.classList.remove('hidden');
+        spinner.classList.add('hidden');
+        submitText.textContent = 'アンケートを送信する';
+        document.getElementById('modalBackdrop').classList.remove('hidden');
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('modalBackdrop').classList.add('hidden');
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toastText');
+      text.innerText = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3000);
+    }
+
+    // 回答内容をクリップボードにコピー
+    function copyFormResponses() {
+      const form = document.getElementById('surveyForm');
+      const formData = new FormData(form);
+
+      let textOutput = "【第2回セミナー終了時アンケート 回答内容】\n";
+      textOutput += "----------------------------------------\n";
+      textOutput += `貴社名: ${formData.get('company_name') || '未入力'}\n`;
+      textOutput += `お名前: ${formData.get('respondent_name') || '未入力'}\n`;
+      textOutput += `ご役職: ${formData.get('position') || '未選択'}\n`;
+      textOutput += `メールアドレス: ${formData.get('email') || '未入力'}\n`;
+      
+      let industry = formData.get('industry') || '未選択';
+      if (industry === 'その他') {
+        const otherText = document.getElementById('industry_other_text').value;
+        industry += ` (${otherText || '未記入'})`;
+      }
+      textOutput += `主な業種: ${industry}\n`;
+
+      const empStatus = formData.get('employment_status') || '未選択';
+      textOutput += `外国人雇用の現状: ${empStatus}\n`;
+
+      const visas = formData.getAll('current_visa');
+      if (visas.length > 0) {
+        textOutput += ` - 雇用中の在留資格: ${visas.join(', ')}\n`;
+      }
+
+      textOutput += `\n[Q1 満足度]: ${formData.get('satisfaction') || '未選択'}\n`;
+      const reason = formData.get('satisfaction_reason');
+      if (reason) textOutput += ` 理由: ${reason}\n`;
+
+      const helpful = formData.getAll('helpful_points');
+      if (document.getElementById('helpful_other_check').checked) {
+        helpful.push(`その他(${document.getElementById('helpful_other_text').value || '未記入'})`);
+      }
+      textOutput += `\n[Q2 共感・現場で活かしたい点]:\n${helpful.length > 0 ? helpful.map(h => ' - ' + h).join('\n') : ' なし'}\n`;
+
+      const issues = formData.getAll('issues');
+      if (document.getElementById('issue_other_check').checked) {
+        issues.push(`その他(${document.getElementById('issue_other_text').value || '未記入'})`);
+      }
+      textOutput += `\n[Q3 現場のお困りごと・社内体制の課題]:\n${issues.length > 0 ? issues.map(i => ' - ' + i).join('\n') : ' なし'}\n`;
+
+      textOutput += `\n[Q4 第4回質疑用質問]:\n${formData.get('question_for_lecture4') || '特になし'}\n`;
+
+      const benefits = formData.getAll('benefits_request');
+      textOutput += `\n[Q5 特典・サポート希望]:\n${benefits.length > 0 ? benefits.map(b => ' - ' + b).join('\n') : ' なし'}\n`;
+      textOutput += "----------------------------------------\n";
+
+      const textArea = document.createElement("textarea");
+      textArea.value = textOutput;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
+      textArea.style.top = "0";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showToast("回答テキストをクリップボードにコピーしました");
+        } else {
+          showToast("コピーに失敗しました。手動でご入力ください。");
+        }
+      } catch (err) {
+        showToast("コピー機能をご利用いただけません");
+      }
+      document.body.removeChild(textArea);
+    }
+  </script>
+</body>
+</html>
